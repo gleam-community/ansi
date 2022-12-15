@@ -1,0 +1,12 @@
+name = "gleamy_ansi"
+version = "0.1.0"
+
+licences = ["Apache-2.0"]
+description = "A Gleam library for ansi formatting"
+
+[dependencies]
+gleam_stdlib = "~> 0.25"
+gleam_bitwise = "~> 1.2"
+
+[dev-dependencies]
+gleeunit = "~> 0.7"
