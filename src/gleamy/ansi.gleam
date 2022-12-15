@@ -19,11 +19,7 @@ type Code {
 
 // UTILITY --------------------------------------------------------------------
 
-// /**
-//  * Builds colour code
-//  * @param open
-//  * @param close
-//  */
+/// Builds colour code
 fn code(open: List(Int), close: Int) -> Code {
   let close_str = int.to_string(close)
   let open_strs = list.map(open, int.to_string)
