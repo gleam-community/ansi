@@ -269,12 +269,6 @@ pub fn bg_bright_white_test() {
   |> should.equal("[107mfoo bar[49m")
 }
 
-// pub fn clamp_using_rgb8_test() {
-//   "foo bar"
-//   |> ansi.rgb8(-10)
-//   |> should.equal("[38;5;0mfoo bar[39m")
-// }
-
 pub fn hex_test() {
   "foo bar"
   |> ansi.hex(0x292A2B)
@@ -284,5 +278,4 @@ pub fn hex_test() {
 pub fn bg_hex_test() {
   "foo bar"
   |> ansi.bg_hex(0x292A2B)
-  |> should.equal("[48;2;41;42;43mfoo bar[49m")
 }
