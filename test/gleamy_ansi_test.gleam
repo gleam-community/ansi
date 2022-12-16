@@ -269,32 +269,20 @@ pub fn bg_bright_white_test() {
   |> should.equal("[107mfoo bar[49m")
 }
 
-pub fn clamp_using_rgb8_test() {
-  "foo bar"
-  |> ansi.rgb8(-10)
-  |> should.equal("[38;5;0mfoo bar[39m")
-}
+// pub fn clamp_using_rgb8_test() {
+//   "foo bar"
+//   |> ansi.rgb8(-10)
+//   |> should.equal("[38;5;0mfoo bar[39m")
+// }
 
-pub fn rgb8_test() {
+pub fn hex_test() {
   "foo bar"
-  |> ansi.rgb8(42)
-  |> should.equal("[38;5;42mfoo bar[39m")
-}
-
-pub fn bg_rbg8_test() {
-  "foo bar"
-  |> ansi.bg_rgb8(42)
-  |> should.equal("[48;5;42mfoo bar[49m")
-}
-
-pub fn rbg24_test() {
-  "foo bar"
-  |> ansi.rgb24(0x292A2B)
+  |> ansi.hex(0x292A2B)
   |> should.equal("[38;2;41;42;43mfoo bar[39m")
 }
 
 pub fn bg_rbg24_test() {
   "foo bar"
-  |> ansi.bg_rgb24(0x292A2B)
+  |> ansi.bg_hex(0x292A2B)
   |> should.equal("[48;2;41;42;43mfoo bar[49m")
 }

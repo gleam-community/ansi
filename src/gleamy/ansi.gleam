@@ -997,18 +997,7 @@ pub fn bright_white(text: String) -> String {
 /// </div>
 ///
 pub fn pink(text: String) -> String {
-  rgb24(text, 0xffaff3)
-}
-
-/// Set text colour using paletted 8bit colours.
-///
-/// ## Example
-///
-/// ```gleam
-/// let white_text = rgb8("lucy", 255)
-/// ```
-pub fn rgb8(text: String, colour: Int) -> String {
-  run(text, code([38, 5, int.clamp(colour, max: 255, min: 0)], 39))
+  hex(text, 0xffaff3)
 }
 
 /// Set text colour using 24bit rgb.
@@ -1018,7 +1007,7 @@ pub fn rgb8(text: String, colour: Int) -> String {
 /// ```gleam
 /// let blue_text = rgb24("lucy", 0xa6fffb)
 /// ```
-pub fn rgb24(text: String, colour: Int) -> String {
+pub fn hex(text: String, colour: Int) -> String {
   let colour = int.clamp(colour, max: 0xffffff, min: 0x0)
   run(
     text,
@@ -1818,18 +1807,7 @@ pub fn bg_bright_white(text: String) -> String {
 /// </div>
 ///
 pub fn bg_pink(text: String) -> String {
-  bg_rgb24(text, 0xffaff3)
-}
-
-/// Set background colour using paletted 8bit colours.
-///
-/// ## Example
-///
-/// ```gleam
-/// let white_background = bg_rgb8("lucy", 255)
-/// ```
-pub fn bg_rgb8(text: String, colour: Int) -> String {
-  run(text, code([48, 5, int.clamp(colour, max: 255, min: 0)], 49))
+  bg_hex(text, 0xffaff3)
 }
 
 /// Set background colour using 24bit rgb.
@@ -1839,7 +1817,7 @@ pub fn bg_rgb8(text: String, colour: Int) -> String {
 /// ```gleam
 /// let blue_background = bg_rgb24("lucy", 0xa6fffb)
 /// ```
-pub fn bg_rgb24(text: String, colour: Int) -> String {
+pub fn bg_hex(text: String, colour: Int) -> String {
   run(
     text,
     code(
