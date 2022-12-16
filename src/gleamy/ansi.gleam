@@ -28,8 +28,7 @@
 ////   - [`bright_magenta`](#bright_magenta)
 ////   - [`bright_cyan`](#bright_cyan)
 ////   - [`bright_white`](#bright_white)
-////   - [`rgb8`](#rgb8)
-////   - [`rgb24`](#rgb24)
+////   - [`hex`](#hex)
 //// - **Background colour**
 ////   - [`bg_black`](#bg_black)
 ////   - [`bg_red`](#bg_red)
@@ -48,8 +47,7 @@
 ////   - [`bg_bright_magenta`](#bg_bright_magenta)
 ////   - [`bg_bright_cyan`](#bg_bright_cyan)
 ////   - [`bg_bright_white`](#bg_bright_white)
-////   - [`bg_rgb8`](#bg_rgb8)
-////   - [`bg_rgb24`](#bg_rgb24)
+////   - [`bg_hex`](#bg_hex)
 //// 
 //// ---
 ////
@@ -1000,13 +998,53 @@ pub fn pink(text: String) -> String {
   hex(text, 0xffaff3)
 }
 
-/// Set text colour using 24bit rgb.
+/// Colour the given text the given colour represented by a hex `Int`.
 ///
-/// ## Example
+/// The given hex Int can be any valid [shorthand hexadecimal form](https://en.wikipedia.org/wiki/Web_colors#Shorthand_hexadecimal_form).
+///
+/// ❗️ Note that if supplied hex Int is less than 0 or larger than 0xfffff the
+/// colour will be set to black and white respectively.
+///
+/// <details>
+/// <summary>Example:</summary>
 ///
 /// ```gleam
-/// let blue_text = rgb24("lucy", 0xa6fffb)
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.hex("lucy", 0xffaff3)
+///   // => "\e[38;2;255;175;243mlucy\e[39m"
+/// }
 /// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn hex(text: String, colour: Int) -> String {
   let colour = int.clamp(colour, max: 0xffffff, min: 0x0)
   run(
@@ -1810,13 +1848,53 @@ pub fn bg_pink(text: String) -> String {
   bg_hex(text, 0xffaff3)
 }
 
-/// Set background colour using 24bit rgb.
+/// Colour the given text's background the given colour represented by a hex `Int`.
 ///
-/// ## Example
+/// The given hex Int can be any valid [shorthand hexadecimal form](https://en.wikipedia.org/wiki/Web_colors#Shorthand_hexadecimal_form).
+///
+/// ❗️ Note that if supplied hex Int is less than 0 or larger than 0xfffff the
+/// colour will be set to black and white respectively.
+///
+/// <details>
+/// <summary>Example:</summary>
 ///
 /// ```gleam
-/// let blue_background = bg_rgb24("lucy", 0xa6fffb)
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.hex("lucy", 0xffaff3)
+///   // => "\e[48;2;255;175;243mlucy\e[49m"
+/// }
 /// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_hex(text: String, colour: Int) -> String {
   run(
     text,

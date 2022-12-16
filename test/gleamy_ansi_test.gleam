@@ -281,7 +281,7 @@ pub fn hex_test() {
   |> should.equal("[38;2;41;42;43mfoo bar[39m")
 }
 
-pub fn bg_rbg24_test() {
+pub fn bg_hex_test() {
   "foo bar"
   |> ansi.bg_hex(0x292A2B)
   |> should.equal("[48;2;41;42;43mfoo bar[49m")
