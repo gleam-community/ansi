@@ -130,37 +130,324 @@ pub fn reset(text: String) -> String {
   run(text, code([0], 0))
 }
 
-/// Make the text bold.
+/// Style the given text bold. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bold("lucy")
+///   // => "\e[1mlucy\e[22m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[22m"` added to the string. This is the escape code
+/// for the "default" bold/dim style of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// style, it will use both the outter style and the inner style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.dim("Isn't " <> ansi.bold("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be dim but the text "fun?" will be
+/// both underlined, *and* bold!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bold(text: String) -> String {
   run(text, code([1], 22))
 }
 
-/// The text emits only a small amount of light.
+/// Style the given text's colour to be dimmer. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.dim("lucy")
+///   // => "\e[2mlucy\e[22m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[22m"` added to the string. This is the escape code
+/// for the "default" bold/dim style of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// style, it will use both the outter style and the inner style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.dim("Isn't " <> ansi.bold("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be dim but the text "fun?" will be
+/// both underlined, *and* bold!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn dim(text: String) -> String {
   run(text, code([2], 22))
 }
 
-/// Make the text italic.
+/// Style the given text italic. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.italic("lucy")
+///   // => "\e[3mlucy\e[23m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[23m"` added to the string. This is the escape code
+/// for the "default" italic style of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// style, it will use both the outter style and the inner style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.underline("Isn't " <> ansi.bold("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be underlined but the text "fun?" will be
+/// both underlined, *and* bold!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn italic(text: String) -> String {
   run(text, code([3], 23))
 }
 
-/// Make the text underline.
+/// Style the given text's colour to be dimmer. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.underline("lucy")
+///   // => "\e[4mlucy\e[24m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[24m"` added to the string. This is the escape code
+/// for the "default" underline style of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// style, it will use both the outter style and the inner style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.dim("Isn't " <> ansi.bold("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be dim but the text "fun?" will be
+/// both underlined, *and* bold!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn underline(text: String) -> String {
   run(text, code([4], 24))
 }
 
-///  Invert background colour and text colour.
+/// Inverse the given text's colour, and background colour. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.inverse("lucy")
+///   // => "\e[7mlucy\e[27m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[27m"` added to the string. This is the escape code
+/// for the "default" inverse style of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// style, it will use both the outter style and the inner style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.dim("Isn't " <> ansi.bold("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be dim but the text "fun?" will be
+/// both underlined, *and* bold!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn inverse(text: String) -> String {
   run(text, code([7], 27))
 }
 
-/// Make the text hidden.
+/// Style the given text to be hidden. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.hidden("lucy")
+///   // => "\e[8mlucy\e[28m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[28m"` added to the string. This is the escape code
+/// for the "default" hidden style of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// style, it will use both the outter style and the inner style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.dim("Isn't " <> ansi.bold("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be dim but the text "fun?" will be
+/// both underlined, *and* bold!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn hidden(text: String) -> String {
   run(text, code([8], 28))
 }
 
-/// Put horizontal line through the center of the text.
+/// Style the given text to be striked through. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.strikethrough("lucy")
+///   // => "\e[9mlucy\e[29m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[29m"` added to the string. This is the escape code
+/// for the "default" strikethrough style of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// style, it will use both the outter style and the inner style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.dim("Isn't " <> ansi.bold("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be dim but the text "fun?" will be
+/// both underlined, *and* bold!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn strikethrough(text: String) -> String {
   run(text, code([9], 29))
 }
