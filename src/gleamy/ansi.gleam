@@ -140,11 +140,11 @@ pub fn reset(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bold("lucy")
-///   // => "\e[1mlucy\e[22m"
+///   // => "\x1B[1mlucy\x1B[22m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[22m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[22m"` added to the string. This is the escape code
 /// for the "default" bold/dim style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -186,11 +186,11 @@ pub fn bold(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.dim("lucy")
-///   // => "\e[2mlucy\e[22m"
+///   // => "\x1B[2mlucy\x1B[22m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[22m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[22m"` added to the string. This is the escape code
 /// for the "default" bold/dim style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -232,11 +232,11 @@ pub fn dim(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.italic("lucy")
-///   // => "\e[3mlucy\e[23m"
+///   // => "\x1B[3mlucy\x1B[23m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[23m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[23m"` added to the string. This is the escape code
 /// for the "default" italic style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -278,11 +278,11 @@ pub fn italic(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.underline("lucy")
-///   // => "\e[4mlucy\e[24m"
+///   // => "\x1B[4mlucy\x1B[24m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[24m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[24m"` added to the string. This is the escape code
 /// for the "default" underline style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -324,11 +324,11 @@ pub fn underline(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.inverse("lucy")
-///   // => "\e[7mlucy\e[27m"
+///   // => "\x1B[7mlucy\x1B[27m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[27m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[27m"` added to the string. This is the escape code
 /// for the "default" inverse style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -370,11 +370,11 @@ pub fn inverse(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.hidden("lucy")
-///   // => "\e[8mlucy\e[28m"
+///   // => "\x1B[8mlucy\x1B[28m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[28m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[28m"` added to the string. This is the escape code
 /// for the "default" hidden style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -416,11 +416,11 @@ pub fn hidden(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.strikethrough("lucy")
-///   // => "\e[9mlucy\e[29m"
+///   // => "\x1B[9mlucy\x1B[29m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[29m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[29m"` added to the string. This is the escape code
 /// for the "default" strikethrough style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -464,11 +464,11 @@ pub fn strikethrough(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.black("lucy")
-///   // => "\e[30mlucy\e[39m"
+///   // => "\x1B[30mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -510,11 +510,11 @@ pub fn black(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.red("lucy")
-///   // => "\e[31mlucy\e[39m"
+///   // => "\x1B[31mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -556,11 +556,11 @@ pub fn red(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.green("lucy")
-///   // => "\e[32mlucy\e[39m"
+///   // => "\x1B[32mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -602,11 +602,11 @@ pub fn green(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.yellow("lucy")
-///   // => "\e[33mlucy\e[39m"
+///   // => "\x1B[33mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -648,11 +648,11 @@ pub fn yellow(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.blue("lucy")
-///   // => "\e[34mlucy\e[39m"
+///   // => "\x1B[34mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -694,11 +694,11 @@ pub fn blue(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.magenta("lucy")
-///   // => "\e[35mlucy\e[39m"
+///   // => "\x1B[35mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -740,11 +740,11 @@ pub fn magenta(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.cyan("lucy")
-///   // => "\e[36mlucy\e[39m"
+///   // => "\x1B[36mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -786,11 +786,11 @@ pub fn cyan(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.white("lucy")
-///   // => "\e[37mlucy\e[39m"
+///   // => "\x1B[37mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -832,11 +832,11 @@ pub fn white(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.gray("lucy")
-///   // => "\e[90mlucy\e[39m"
+///   // => "\x1B[90mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -886,11 +886,11 @@ pub fn gray(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bright_black("lucy")
-///   // => "\e[90mlucy\e[39m"
+///   // => "\x1B[90mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -933,11 +933,11 @@ pub fn bright_black(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bright_red("lucy")
-///   // => "\e[91mlucy\e[39m"
+///   // => "\x1B[91mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -978,11 +978,11 @@ pub fn bright_red(text: String) -> String {
 /// ```gleam
 /// fn example() {
 ///   ansi.bright_green("lucy")
-///   // => "\e[92mlucy\e[39m"
+///   // => "\x1B[92mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1023,11 +1023,11 @@ pub fn bright_green(text: String) -> String {
 /// ```gleam
 /// fn example() {
 ///   ansi.bright_yellow("lucy")
-///   // => "\e[93mlucy\e[39m"
+///   // => "\x1B[93mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1068,11 +1068,11 @@ pub fn bright_yellow(text: String) -> String {
 /// ```gleam
 /// fn example() {
 ///   ansi.bright_blue("lucy")
-///   // => "\e[94mlucy\e[39m"
+///   // => "\x1B[94mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1113,11 +1113,11 @@ pub fn bright_blue(text: String) -> String {
 /// ```gleam
 /// fn example() {
 ///   ansi.bright_magenta("lucy")
-///   // => "\e[95mlucy\e[39m"
+///   // => "\x1B[95mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1158,11 +1158,11 @@ pub fn bright_magenta(text: String) -> String {
 /// ```gleam
 /// fn example() {
 ///   ansi.bright_cyan("lucy")
-///   // => "\e[96mlucy\e[39m"
+///   // => "\x1B[96mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1203,11 +1203,11 @@ pub fn bright_cyan(text: String) -> String {
 /// ```gleam
 /// fn example() {
 ///   ansi.bright_white("lucy")
-///   // => "\e[97mlucy\e[39m"
+///   // => "\x1B[97mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1249,11 +1249,11 @@ pub fn bright_white(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.pink("lucy")
-///   // => "\e[38;2;255;175;243mlucy\e[39m"
+///   // => "\x1B[38;2;255;175;243mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[39m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1300,11 +1300,11 @@ pub fn pink(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.hex("lucy", 0xffaff3)
-///   // => "\e[38;2;255;175;243mlucy\e[39m"
+///   // => "\x1B[38;2;255;175;243mlucy\x1B[39m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1363,11 +1363,11 @@ pub fn hex(text: String, colour: Int) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_black("lucy")
-///   // => "\e[40mlucy\e[49m"
+///   // => "\x1B[40mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1409,11 +1409,11 @@ pub fn bg_black(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_red("lucy")
-///   // => "\e[41mlucy\e[49m"
+///   // => "\x1B[41mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1455,11 +1455,11 @@ pub fn bg_red(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_green("lucy")
-///   // => "\e[42mlucy\e[49m"
+///   // => "\x1B[42mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1501,11 +1501,11 @@ pub fn bg_green(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_yellow("lucy")
-///   // => "\e[43mlucy\e[49m"
+///   // => "\x1B[43mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1547,11 +1547,11 @@ pub fn bg_yellow(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_blue("lucy")
-///   // => "\e[44mlucy\e[49m"
+///   // => "\x1B[44mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1593,11 +1593,11 @@ pub fn bg_blue(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_magenta("lucy")
-///   // => "\e[45mlucy\e[49m"
+///   // => "\x1B[45mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1639,11 +1639,11 @@ pub fn bg_magenta(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_cyan("lucy")
-///   // => "\e[46mlucy\e[49m"
+///   // => "\x1B[46mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1685,11 +1685,11 @@ pub fn bg_cyan(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_white("lucy")
-///   // => "\e[47mlucy\e[49m"
+///   // => "\x1B[47mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1731,11 +1731,11 @@ pub fn bg_white(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_bright_black("lucy")
-///   // => "\e[100mlucy\e[49m"
+///   // => "\x1B[100mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1777,11 +1777,11 @@ pub fn bg_bright_black(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_bright_red("lucy")
-///   // => "\e[101mlucy\e[49m"
+///   // => "\x1B[101mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1823,11 +1823,11 @@ pub fn bg_bright_red(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_bright_green("lucy")
-///   // => "\e[102mlucy\e[49m"
+///   // => "\x1B[102mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1869,11 +1869,11 @@ pub fn bg_bright_green(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_bright_yellow("lucy")
-///   // => "\e[103mlucy\e[49m"
+///   // => "\x1B[103mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1915,11 +1915,11 @@ pub fn bg_bright_yellow(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_bright_blue("lucy")
-///   // => "\e[104mlucy\e[49m"
+///   // => "\x1B[104mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -1961,11 +1961,11 @@ pub fn bg_bright_blue(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_bright_magenta("lucy")
-///   // => "\e[105mlucy\e[49m"
+///   // => "\x1B[105mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -2007,11 +2007,11 @@ pub fn bg_bright_magenta(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_bright_cyan("lucy")
-///   // => "\e[106mlucy\e[49m"
+///   // => "\x1B[106mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -2053,11 +2053,11 @@ pub fn bg_bright_cyan(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_bright_white("lucy")
-///   // => "\e[107mlucy\e[49m"
+///   // => "\x1B[107mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -2099,11 +2099,11 @@ pub fn bg_bright_white(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.bg_pink("lucy")
-///   // => "\e[48;2;255;175;243mlucy\e[49m"
+///   // => "\x1B[48;2;255;175;243mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
@@ -2150,11 +2150,11 @@ pub fn bg_pink(text: String) -> String {
 /// 
 /// fn example() {
 ///   ansi.hex("lucy", 0xffaff3)
-///   // => "\e[48;2;255;175;243mlucy\e[49m"
+///   // => "\x1B[48;2;255;175;243mlucy\x1B[49m"
 /// }
 /// ```
 ///
-/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
