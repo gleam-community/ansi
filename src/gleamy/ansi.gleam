@@ -954,7 +954,47 @@ pub fn bright_white(text: String) -> String {
   run(text, code([97], 39))
 }
 
-/// Colour the given text with Gleam's official pink `0xffaff3`. 
+/// Colour the given text pink. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.pink("lucy")
+///   // => "\e[38;2;255;175;243mlucy\e[39m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[39m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
 ///
 pub fn pink(text: String) -> String {
   rgb24(text, 0xffaff3)
@@ -999,87 +1039,784 @@ pub fn rgb24(text: String, colour: Int) -> String {
 
 // BACKGROUND -----------------------------------------------------------------
 
-/// Set background colour to black.
+/// Colour the given text's background black. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_black("lucy")
+///   // => "\e[40mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_black(text: String) -> String {
   run(text, code([40], 49))
 }
 
-/// Set background colour to red.
+/// Colour the given text's background red. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_red("lucy")
+///   // => "\e[41mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_red(text: String) -> String {
   run(text, code([41], 49))
 }
 
-/// Set background colour to green.
+/// Colour the given text's background green. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_green("lucy")
+///   // => "\e[42mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_green(text: String) -> String {
   run(text, code([42], 49))
 }
 
-/// Set background colour to yellow.
+/// Colour the given text's background yellow. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_yellow("lucy")
+///   // => "\e[43mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_yellow(text: String) -> String {
   run(text, code([43], 49))
 }
 
-/// Set background colour to blue.
+/// Colour the given text's background blue. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_blue("lucy")
+///   // => "\e[44mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_blue(text: String) -> String {
   run(text, code([44], 49))
 }
 
-/// Set background colour to magenta.
+/// Colour the given text's background magenta. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_magenta("lucy")
+///   // => "\e[45mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_magenta(text: String) -> String {
   run(text, code([45], 49))
 }
 
-/// Set background colour to cyan.
+/// Colour the given text's background cyan. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_cyan("lucy")
+///   // => "\e[46mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_cyan(text: String) -> String {
   run(text, code([46], 49))
 }
 
-/// Set background colour to white.
+/// Colour the given text's background white. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_white("lucy")
+///   // => "\e[47mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_white(text: String) -> String {
   run(text, code([47], 49))
 }
 
-/// Set background colour to bright black.
+/// Colour the given text's background bright black. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_bright_black("lucy")
+///   // => "\e[100mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_bright_black(text: String) -> String {
   run(text, code([100], 49))
 }
 
-/// Set background colour to bright red.
+/// Colour the given text's background bright red. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_bright_red("lucy")
+///   // => "\e[101mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_bright_red(text: String) -> String {
   run(text, code([101], 49))
 }
 
-/// Set background colour to bright green.
+/// Colour the given text's background bright green. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_bright_green("lucy")
+///   // => "\e[102mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_bright_green(text: String) -> String {
   run(text, code([102], 49))
 }
 
-/// Set background colour to bright yellow.
+/// Colour the given text's background bright yellow. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_bright_yellow("lucy")
+///   // => "\e[103mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_bright_yellow(text: String) -> String {
   run(text, code([103], 49))
 }
 
-/// Set background colour to bright blue.
+/// Colour the given text's background bright blue. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_bright_blue("lucy")
+///   // => "\e[104mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_bright_blue(text: String) -> String {
   run(text, code([104], 49))
 }
 
-/// Set background colour to bright magenta.
+/// Colour the given text's background bright magenta. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_bright_magenta("lucy")
+///   // => "\e[105mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_bright_magenta(text: String) -> String {
   run(text, code([105], 49))
 }
 
-/// Set background colour to bright cyan.
+/// Colour the given text's background bright cyan. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_bright_cyan("lucy")
+///   // => "\e[106mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_bright_cyan(text: String) -> String {
   run(text, code([106], 49))
 }
 
-/// Set background colour to bright white.
+/// Colour the given text's background bright white. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_bright_white("lucy")
+///   // => "\e[107mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_bright_white(text: String) -> String {
   run(text, code([107], 49))
 }
 
-/// Set background to #ffaff3
+/// Colour the given text's background pink. 
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.bg_pink("lucy")
+///   // => "\e[48;2;255;175;243mlucy\e[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\e[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
 pub fn bg_pink(text: String) -> String {
   bg_rgb24(text, 0xffaff3)
 }
