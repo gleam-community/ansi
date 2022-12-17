@@ -1,6 +1,6 @@
 import gleeunit
 import gleeunit/should
-import gleamy/ansi
+import gleam_community/ansi
 
 pub fn main() {
   gleeunit.main()

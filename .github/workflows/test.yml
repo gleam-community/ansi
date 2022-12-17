@@ -1,22 +1,27 @@
-name: test
+name: main
 
 on:
   push:
-    branches:
-      - master
-      - main
+    branches: ["main"]
   pull_request:
+    branches: ["**"]
+
+concurrency:
+  group: main-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3.0.0
-      - uses: erlef/setup-beam@v1.14.0
+      - uses: actions/checkout@v3
+
+      - uses: erlef/setup-beam@v1
         with:
-          otp-version: "25.1"
-          gleam-version: "0.25.0"
-          # elixir-version: "1.14.1"
-      - run: gleam format --check src test
-      - run: gleam deps download
+          otp-version: "25.0"
+          gleam-version: "0.25.3"
+
+      - run: gleam format --check
+
       - run: gleam test
