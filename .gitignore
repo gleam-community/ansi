@@ -1,5 +1,13 @@
+.DS_Store
+.env*
+.idea/
+.nova/
+.vscode/
+build/
+coverage/
+dist/
+erl_crash.dump
+node_modules/
 *.beam
 *.ez
-build
-erl_crash.dump
-.DS_Store
+*.log
