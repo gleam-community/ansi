@@ -14,7 +14,7 @@ Erlang, Elixir, Node, Deno, even [some browsers](https://bit.ly/devtools-console
 
 ```gleam
 import gleam/io
-import gleamy/ansi
+import gleam_community/ansi
 
 pub fn main() {
   let greeting = "Hello, " <> ansi.pink("world") <> "!"
