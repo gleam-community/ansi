@@ -29,6 +29,8 @@
 ////   - [`bright_cyan`](#bright_cyan)
 ////   - [`bright_white`](#bright_white)
 ////   - [`hex`](#hex)
+////   - [`colour`](#colour)
+////   - [`color`](#color)
 //// - **Background colour**
 ////   - [`bg_black`](#bg_black)
 ////   - [`bg_red`](#bg_red)
@@ -48,6 +50,8 @@
 ////   - [`bg_bright_cyan`](#bg_bright_cyan)
 ////   - [`bg_bright_white`](#bg_bright_white)
 ////   - [`bg_hex`](#bg_hex)
+////   - [`bg_colour`](#bg_colour)
+////   - [`bg_color`](#bg_color)
 //// 
 //// ---
 ////
@@ -93,6 +97,7 @@ import gleam/bitwise
 import gleam/int
 import gleam/list
 import gleam/string
+import gleam_community/colour.{Colour} as gc_colour
 
 // CONSTS ---------------------------------------------------------------------
 
@@ -136,7 +141,7 @@ pub fn reset(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bold("lucy")
@@ -148,11 +153,11 @@ pub fn reset(text: String) -> String {
 /// for the "default" bold/dim style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// style, it will use both the outter style and the inner style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.dim("Isn't " <> ansi.bold("Gleam") <> " fun?")
@@ -182,7 +187,7 @@ pub fn bold(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.dim("lucy")
@@ -194,11 +199,11 @@ pub fn bold(text: String) -> String {
 /// for the "default" bold/dim style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// style, it will use both the outter style and the inner style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.dim("Isn't " <> ansi.bold("Gleam") <> " fun?")
@@ -228,7 +233,7 @@ pub fn dim(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.italic("lucy")
@@ -240,11 +245,11 @@ pub fn dim(text: String) -> String {
 /// for the "default" italic style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// style, it will use both the outter style and the inner style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.underline("Isn't " <> ansi.bold("Gleam") <> " fun?")
@@ -274,7 +279,7 @@ pub fn italic(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.underline("lucy")
@@ -286,11 +291,11 @@ pub fn italic(text: String) -> String {
 /// for the "default" underline style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// style, it will use both the outter style and the inner style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.dim("Isn't " <> ansi.bold("Gleam") <> " fun?")
@@ -320,7 +325,7 @@ pub fn underline(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.inverse("lucy")
@@ -332,11 +337,11 @@ pub fn underline(text: String) -> String {
 /// for the "default" inverse style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// style, it will use both the outter style and the inner style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.dim("Isn't " <> ansi.bold("Gleam") <> " fun?")
@@ -366,7 +371,7 @@ pub fn inverse(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.hidden("lucy")
@@ -378,11 +383,11 @@ pub fn inverse(text: String) -> String {
 /// for the "default" hidden style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// style, it will use both the outter style and the inner style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.dim("Isn't " <> ansi.bold("Gleam") <> " fun?")
@@ -412,7 +417,7 @@ pub fn hidden(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.strikethrough("lucy")
@@ -424,11 +429,11 @@ pub fn hidden(text: String) -> String {
 /// for the "default" strikethrough style of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// style, it will use both the outter style and the inner style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.dim("Isn't " <> ansi.bold("Gleam") <> " fun?")
@@ -460,7 +465,7 @@ pub fn strikethrough(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.black("lucy")
@@ -472,11 +477,11 @@ pub fn strikethrough(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -506,7 +511,7 @@ pub fn black(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.red("lucy")
@@ -518,7 +523,7 @@ pub fn black(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
@@ -552,7 +557,7 @@ pub fn red(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.green("lucy")
@@ -564,11 +569,11 @@ pub fn red(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -598,7 +603,7 @@ pub fn green(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("lucy")
@@ -610,11 +615,11 @@ pub fn green(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -644,7 +649,7 @@ pub fn yellow(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.blue("lucy")
@@ -656,11 +661,11 @@ pub fn yellow(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -690,7 +695,7 @@ pub fn blue(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.magenta("lucy")
@@ -702,11 +707,11 @@ pub fn blue(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -736,7 +741,7 @@ pub fn magenta(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.cyan("lucy")
@@ -748,11 +753,11 @@ pub fn magenta(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -782,7 +787,7 @@ pub fn cyan(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.white("lucy")
@@ -794,11 +799,11 @@ pub fn cyan(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -828,7 +833,7 @@ pub fn white(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.gray("lucy")
@@ -840,11 +845,11 @@ pub fn white(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -882,7 +887,7 @@ pub fn gray(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bright_black("lucy")
@@ -894,11 +899,11 @@ pub fn gray(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -929,7 +934,7 @@ pub fn bright_black(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bright_red("lucy")
@@ -941,11 +946,11 @@ pub fn bright_black(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -986,11 +991,11 @@ pub fn bright_red(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1031,11 +1036,11 @@ pub fn bright_green(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1076,11 +1081,11 @@ pub fn bright_yellow(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1121,11 +1126,11 @@ pub fn bright_blue(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1166,11 +1171,11 @@ pub fn bright_magenta(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1211,11 +1216,11 @@ pub fn bright_cyan(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1245,7 +1250,7 @@ pub fn bright_white(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.pink("lucy")
@@ -1257,11 +1262,11 @@ pub fn bright_white(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1296,7 +1301,7 @@ pub fn pink(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.hex("lucy", 0xffaff3)
@@ -1308,11 +1313,11 @@ pub fn pink(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1351,6 +1356,62 @@ pub fn hex(text: String, colour: Int) -> String {
   )
 }
 
+/// Colour the given text the given colour represented by a `Colour`.
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleam_community/ansi
+/// import gleam_community/colour.{Colour}
+/// 
+/// fn example() {
+///   let pink = colour.from_hsl(0.8583, 1.0, 0,84)
+///   ansi.colour("lucy", pink)
+///   // => "\x1B[48;2;255;175;243mlucy\x1B[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleam_community/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
+pub fn colour(text: String, colour: Colour) -> String {
+  let hex_colour = gc_colour.to_rgb_hex(colour)
+  hex(text, hex_colour)
+}
+
+/// This is an alias for [`colour`](#colour) for those who prefer the American English
+/// spelling.
+///
+pub fn color(text: String, color: Colour) -> String {
+  colour(text, color)
+}
+
 // BACKGROUND -----------------------------------------------------------------
 
 /// Colour the given text's background black. 
@@ -1359,7 +1420,7 @@ pub fn hex(text: String, colour: Int) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_black("lucy")
@@ -1371,11 +1432,11 @@ pub fn hex(text: String, colour: Int) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1405,7 +1466,7 @@ pub fn bg_black(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_red("lucy")
@@ -1417,11 +1478,11 @@ pub fn bg_black(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1451,7 +1512,7 @@ pub fn bg_red(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_green("lucy")
@@ -1463,11 +1524,11 @@ pub fn bg_red(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1497,7 +1558,7 @@ pub fn bg_green(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_yellow("lucy")
@@ -1509,11 +1570,11 @@ pub fn bg_green(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1543,7 +1604,7 @@ pub fn bg_yellow(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_blue("lucy")
@@ -1555,11 +1616,11 @@ pub fn bg_yellow(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1589,7 +1650,7 @@ pub fn bg_blue(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_magenta("lucy")
@@ -1601,11 +1662,11 @@ pub fn bg_blue(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1635,7 +1696,7 @@ pub fn bg_magenta(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_cyan("lucy")
@@ -1647,11 +1708,11 @@ pub fn bg_magenta(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1681,7 +1742,7 @@ pub fn bg_cyan(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_white("lucy")
@@ -1693,11 +1754,11 @@ pub fn bg_cyan(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1727,7 +1788,7 @@ pub fn bg_white(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_bright_black("lucy")
@@ -1739,11 +1800,11 @@ pub fn bg_white(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1773,7 +1834,7 @@ pub fn bg_bright_black(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_bright_red("lucy")
@@ -1785,11 +1846,11 @@ pub fn bg_bright_black(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1819,7 +1880,7 @@ pub fn bg_bright_red(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_bright_green("lucy")
@@ -1831,11 +1892,11 @@ pub fn bg_bright_red(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1865,7 +1926,7 @@ pub fn bg_bright_green(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_bright_yellow("lucy")
@@ -1877,11 +1938,11 @@ pub fn bg_bright_green(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1911,7 +1972,7 @@ pub fn bg_bright_yellow(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_bright_blue("lucy")
@@ -1923,11 +1984,11 @@ pub fn bg_bright_yellow(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -1957,7 +2018,7 @@ pub fn bg_bright_blue(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_bright_magenta("lucy")
@@ -1969,11 +2030,11 @@ pub fn bg_bright_blue(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -2003,7 +2064,7 @@ pub fn bg_bright_magenta(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_bright_cyan("lucy")
@@ -2015,11 +2076,11 @@ pub fn bg_bright_magenta(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -2049,7 +2110,7 @@ pub fn bg_bright_cyan(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_bright_white("lucy")
@@ -2061,11 +2122,11 @@ pub fn bg_bright_cyan(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -2095,7 +2156,7 @@ pub fn bg_bright_white(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.bg_pink("lucy")
@@ -2107,11 +2168,11 @@ pub fn bg_bright_white(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -2146,7 +2207,7 @@ pub fn bg_pink(text: String) -> String {
 /// <summary>Example:</summary>
 ///
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.hex("lucy", 0xffaff3)
@@ -2158,11 +2219,11 @@ pub fn bg_pink(text: String) -> String {
 /// for the "default" colour of the terminal. This means text you write after
 /// this will revert back to default.
 ///
-/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
 /// colour, it will use the colour of the outter style.
 /// 
 /// ```gleam
-/// import gleamy/ansi
+/// import gleam_community/ansi
 /// 
 /// fn example() {
 ///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
@@ -2198,4 +2259,60 @@ pub fn bg_hex(text: String, colour: Int) -> String {
       49,
     ),
   )
+}
+
+/// Colour the given text's background with the given colour represented by a `Colour`.
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleam_community/ansi
+/// import gleam_community/colour.{Colour}
+/// 
+/// fn example() {
+///   let pink = colour.from_hsl(0.8583, 1.0, 0,84)
+///   ansi.bg_colour("lucy", pink)
+///   // => "\x1B[48;2;255;175;243mlucy\x1B[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleam_community/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleam_community/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
+pub fn bg_colour(text: String, colour: Colour) -> String {
+  let hex_colour = gc_colour.to_rgb_hex(colour)
+  bg_hex(text, hex_colour)
+}
+
+/// This is an alias for [`bg_colour`](#bg_colour) for those who prefer the American English
+/// spelling.
+///
+pub fn bg_color(text: String, colour: Colour) -> String {
+  bg_colour(text, colour)
 }
