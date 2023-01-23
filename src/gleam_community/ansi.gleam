@@ -29,6 +29,8 @@
 ////   - [`bright_cyan`](#bright_cyan)
 ////   - [`bright_white`](#bright_white)
 ////   - [`hex`](#hex)
+////   - [`colour`](#colour)
+////   - [`color`](#color)
 //// - **Background colour**
 ////   - [`bg_black`](#bg_black)
 ////   - [`bg_red`](#bg_red)
@@ -48,6 +50,8 @@
 ////   - [`bg_bright_cyan`](#bg_bright_cyan)
 ////   - [`bg_bright_white`](#bg_bright_white)
 ////   - [`bg_hex`](#bg_hex)
+////   - [`bg_colour`](#bg_colour)
+////   - [`bg_color`](#bg_color)
 //// 
 //// ---
 ////
@@ -93,6 +97,7 @@ import gleam/bitwise
 import gleam/int
 import gleam/list
 import gleam/string
+import gleam_community/colour.{Colour} as gc_colour
 
 // CONSTS ---------------------------------------------------------------------
 
@@ -1351,6 +1356,62 @@ pub fn hex(text: String, colour: Int) -> String {
   )
 }
 
+/// Colour the given text the given colour represented by a `Colour`.
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// import gleam_community/colour.{Colour}
+/// 
+/// fn example() {
+///   let pink = colour.from_hsl(0.8583, 1.0, 0,84)
+///   ansi.colour("lucy", pink)
+///   // => "\x1B[48;2;255;175;243mlucy\x1B[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
+pub fn colour(text: String, colour: Colour) -> String {
+  let hex_colour = gc_colour.to_rgb_hex(colour)
+  hex(text, hex_colour)
+}
+
+/// This is an alias for [`colour`](#colour) for those who prefer the American English
+/// spelling.
+///
+pub fn color(text: String, color: Colour) -> String {
+  colour(text, color)
+}
+
 // BACKGROUND -----------------------------------------------------------------
 
 /// Colour the given text's background black. 
@@ -2198,4 +2259,60 @@ pub fn bg_hex(text: String, colour: Int) -> String {
       49,
     ),
   )
+}
+
+/// Colour the given text's background with the given colour represented by a `Colour`.
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleamy/ansi
+/// import gleam_community/colour.{Colour}
+/// 
+/// fn example() {
+///   let pink = colour.from_hsl(0.8583, 1.0, 0,84)
+///   ansi.bg_colour("lucy", pink)
+///   // => "\x1B[48;2;255;175;243mlucy\x1B[49m"
+/// }
+/// ```
+///
+/// ❗️ Note the trailing `"\x1B[49m"` added to the string. This is the escape code
+/// for the "default" colour of the terminal. This means text you write after
+/// this will revert back to default.
+///
+/// ✨ `gleamy/ansi` is smart about nested styles; instead of using the default
+/// colour, it will use the colour of the outter style.
+/// 
+/// ```gleam
+/// import gleamy/ansi
+/// 
+/// fn example() {
+///   ansi.yellow("Isn't " <> ansi.pink("Gleam") <> " fun?")
+/// }
+/// ```
+/// 
+/// In this example, the text "Gleam" will be pink but the text "fun?" will be
+/// yellow, *not* the default colour!
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
+pub fn bg_colour(text: String, colour: Colour) -> String {
+  let hex_colour = gc_colour.to_rgb_hex(colour)
+  bg_hex(text, hex_colour)
+}
+
+/// This is an alias for [`bg_colour`](#bg_colour) for those who prefer the American English
+/// spelling.
+///
+pub fn bg_color(text: String, colour: Colour) -> String {
+  bg_colour(text, colour)
 }

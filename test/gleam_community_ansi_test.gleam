@@ -1,6 +1,7 @@
 import gleeunit
 import gleeunit/should
 import gleam_community/ansi
+import gleam_community/colour
 
 pub fn main() {
   gleeunit.main()
@@ -278,4 +279,16 @@ pub fn hex_test() {
 pub fn bg_hex_test() {
   "foo bar"
   |> ansi.bg_hex(0x292A2B)
+}
+
+pub fn colour_test() {
+  "foo bar"
+  |> ansi.colour(colour.pink)
+  |> should.equal(ansi.pink("foo bar"))
+}
+
+pub fn bg_colour_test() {
+  "foo bar"
+  |> ansi.bg_colour(colour.pink)
+  |> should.equal(ansi.bg_pink("foo bar"))
 }
