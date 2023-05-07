@@ -13,10 +13,13 @@ jobs:
 
       - uses: erlef/setup-beam@v1
         with:
-          otp-version: "25.0"
-          gleam-version: "0.25.3"
+          otp-version: "25.2"
+          gleam-version: "0.28.3"
 
-      - run: cargo install tomlq
+    - uses: aslilac/setup@v1
+      with:
+        archives: |
+          https://mckayla.cloud/tomlq-linux-x64.tar.gz
 
       - run: |
           if [ "v$(tomlq version -f gleam.toml)" == "${{ github.ref_name }}" ]; then
