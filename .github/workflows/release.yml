@@ -16,10 +16,10 @@ jobs:
           otp-version: "25.2"
           gleam-version: "0.28.3"
 
-    - uses: aslilac/setup@v1
-      with:
-        archives: |
-          https://mckayla.cloud/tomlq-linux-x64.tar.gz
+      - uses: aslilac/setup@v1
+        with:
+          archives: |
+            https://mckayla.cloud/tomlq-linux-x64.tar.gz
 
       - run: |
           if [ "v$(tomlq version -f gleam.toml)" == "${{ github.ref_name }}" ]; then
