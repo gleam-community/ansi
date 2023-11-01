@@ -93,11 +93,10 @@
 
 // IMPORTS --------------------------------------------------------------------
 
-import gleam/bitwise
 import gleam/int
 import gleam/list
 import gleam/string
-import gleam_community/colour.{Colour} as gc_colour
+import gleam_community/colour.{type Colour} as gc_colour
 
 // CONSTS ---------------------------------------------------------------------
 
@@ -1345,11 +1344,11 @@ pub fn hex(text: String, colour: Int) -> String {
       [
         38,
         2,
-        bitwise.shift_right(colour, 16)
-        |> bitwise.and(0xff),
-        bitwise.shift_right(colour, 8)
-        |> bitwise.and(0xff),
-        bitwise.and(colour, 0xff),
+        int.bitwise_shift_right(colour, 16)
+        |> int.bitwise_and(0xff),
+        int.bitwise_shift_right(colour, 8)
+        |> int.bitwise_and(0xff),
+        int.bitwise_and(colour, 0xff),
       ],
       39,
     ),
@@ -2250,11 +2249,11 @@ pub fn bg_hex(text: String, colour: Int) -> String {
       [
         48,
         2,
-        bitwise.shift_right(colour, 16)
-        |> bitwise.and(0xff),
-        bitwise.shift_right(colour, 8)
-        |> bitwise.and(0xff),
-        bitwise.and(colour, 0xff),
+        int.bitwise_shift_right(colour, 16)
+        |> int.bitwise_and(0xff),
+        int.bitwise_shift_right(colour, 8)
+        |> int.bitwise_and(0xff),
+        int.bitwise_and(colour, 0xff),
       ],
       49,
     ),
