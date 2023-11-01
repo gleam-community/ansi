@@ -1,5 +1,5 @@
 name = "gleam_community_ansi"
-version = "1.1.0"
+version = "1.2.0"
 licences = ["Apache-2.0"]
 description = "ANSI colours, formatting, and control codes"
 repository = { type = "github", user = "gleam-community", repo = "ansi" }
