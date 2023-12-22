@@ -116,9 +116,18 @@ fn code(open: List(Int), close: Int) -> Code {
   let open_strs = list.map(open, int.to_string)
 
   Code(
-    open: asci_escape_character <> "[" <> string.join(open_strs, ";") <> "m",
-    close: asci_escape_character <> "[" <> close_str <> "m",
-    regexp: asci_escape_character <> "[" <> close_str <> "m",
+    open: asci_escape_character
+    <> "["
+    <> string.join(open_strs, ";")
+    <> "m",
+    close: asci_escape_character
+    <> "["
+    <> close_str
+    <> "m",
+    regexp: asci_escape_character
+    <> "["
+    <> close_str
+    <> "m",
   )
 }
 
