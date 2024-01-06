@@ -52,6 +52,8 @@
 ////   - [`bg_hex`](#bg_hex)
 ////   - [`bg_colour`](#bg_colour)
 ////   - [`bg_color`](#bg_color)
+//// - **Utilities**
+////   - [`strip`](#strip)
 ////
 //// ---
 ////
@@ -96,6 +98,7 @@
 import gleam/int
 import gleam/list
 import gleam/string
+import gleam/regex
 import gleam_community/colour.{type Colour} as gc_colour
 
 // CONSTS ---------------------------------------------------------------------
@@ -2316,6 +2319,44 @@ pub fn bg_hex(text: String, colour: Int) -> String {
 pub fn bg_colour(text: String, colour: Colour) -> String {
   let hex_colour = gc_colour.to_rgb_hex(colour)
   bg_hex(text, hex_colour)
+}
+
+/// Strips the ansi control characters from the text.
+///
+/// <details>
+/// <summary>Example:</summary>
+///
+/// ```gleam
+/// import gleam_community/ansi
+///
+/// fn example() {
+///   let bold_lucy = ansi.bold("lucy")
+///   // => "\x1B[1mlucy\x1B[22m"
+///   ansi.strip(bold_lucy)
+///   // => "lucy"
+/// }
+/// ```
+///
+/// In this example, the text "lucy" is boldened by `ansi.bold` and then converted back to the original
+/// string with `ansi.strip`.
+/// </details>
+///
+/// <div style="position: relative;">
+///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
+///         <small>Spot a typo? Open an issue!</small>
+///     </a>
+///     <a style="position: absolute; right: 0;" href="#">
+///         <small>Back to top ↑</small>
+///     </a>
+/// </div>
+///
+pub fn strip(text: String) -> String {
+  let regex_options = regex.Options(False, True)
+  let assert Ok(r) = regex.compile("(?:\\[(?:\\d+;?)+m)+", with: regex_options)
+
+  r
+  |> regex.split(text)
+  |> string.join("")
 }
 
 /// This is an alias for [`bg_colour`](#bg_colour) for those who prefer the American English
