@@ -292,3 +292,25 @@ pub fn bg_colour_test() {
   |> ansi.bg_colour(colour.pink)
   |> should.equal(ansi.bg_pink("foo bar"))
 }
+
+pub fn strip_test() {
+  "foo bar"
+  |> ansi.hex(0x292A2B)
+  |> ansi.strip()
+  |> should.equal("foo bar")
+
+  "foo bar"
+  |> ansi.bg_pink()
+  |> ansi.pink()
+  |> ansi.strip()
+  |> should.equal("foo bar")
+
+  "foo bar"
+  |> ansi.hex(0x292A2B)
+  |> ansi.dim()
+  |> ansi.underline()
+  |> ansi.bg_pink()
+  |> ansi.inverse()
+  |> ansi.strip()
+  |> should.equal("foo bar")
+}
