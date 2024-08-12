@@ -97,8 +97,8 @@
 
 import gleam/int
 import gleam/list
-import gleam/string
 import gleam/regex
+import gleam/string
 import gleam_community/colour.{type Colour} as gc_colour
 
 // CONSTS ---------------------------------------------------------------------
@@ -119,18 +119,9 @@ fn code(open: List(Int), close: Int) -> Code {
   let open_strs = list.map(open, int.to_string)
 
   Code(
-    open: asci_escape_character
-    <> "["
-    <> string.join(open_strs, ";")
-    <> "m",
-    close: asci_escape_character
-    <> "["
-    <> close_str
-    <> "m",
-    regexp: asci_escape_character
-    <> "["
-    <> close_str
-    <> "m",
+    open: asci_escape_character <> "[" <> string.join(open_strs, ";") <> "m",
+    close: asci_escape_character <> "[" <> close_str <> "m",
+    regexp: asci_escape_character <> "[" <> close_str <> "m",
   )
 }
 
@@ -1265,7 +1256,7 @@ pub fn bright_white(text: String) -> String {
 ///
 /// fn example() {
 ///   ansi.pink("lucy")
-///   // => "\x1B[38;2;255;175;243mlucy\x1B[39m"
+///   // => "\x1B[38;5;219mlucy\x1B[39m"
 /// }
 /// ```
 ///
@@ -1298,7 +1289,7 @@ pub fn bright_white(text: String) -> String {
 /// </div>
 ///
 pub fn pink(text: String) -> String {
-  hex(text, 0xffaff3)
+  run(text, code([38, 5, 219], 39))
 }
 
 /// Colour the given text the given colour represented by a hex `Int`.
@@ -1357,9 +1348,9 @@ pub fn hex(text: String, colour: Int) -> String {
         38,
         2,
         int.bitwise_shift_right(colour, 16)
-        |> int.bitwise_and(0xff),
+          |> int.bitwise_and(0xff),
         int.bitwise_shift_right(colour, 8)
-        |> int.bitwise_and(0xff),
+          |> int.bitwise_and(0xff),
         int.bitwise_and(colour, 0xff),
       ],
       39,
@@ -2171,7 +2162,7 @@ pub fn bg_bright_white(text: String) -> String {
 ///
 /// fn example() {
 ///   ansi.bg_pink("lucy")
-///   // => "\x1B[48;2;255;175;243mlucy\x1B[49m"
+///   // => "\x1B[48;5;219mlucy\x1B[49m"
 /// }
 /// ```
 ///
@@ -2204,7 +2195,7 @@ pub fn bg_bright_white(text: String) -> String {
 /// </div>
 ///
 pub fn bg_pink(text: String) -> String {
-  bg_hex(text, 0xffaff3)
+  run(text, code([48, 5, 219], 49))
 }
 
 /// Colour the given text's background the given colour represented by a hex `Int`.
@@ -2262,9 +2253,9 @@ pub fn bg_hex(text: String, colour: Int) -> String {
         48,
         2,
         int.bitwise_shift_right(colour, 16)
-        |> int.bitwise_and(0xff),
+          |> int.bitwise_and(0xff),
         int.bitwise_shift_right(colour, 8)
-        |> int.bitwise_and(0xff),
+          |> int.bitwise_and(0xff),
         int.bitwise_and(colour, 0xff),
       ],
       49,
