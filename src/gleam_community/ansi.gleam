@@ -97,7 +97,7 @@
 
 import gleam/int
 import gleam/list
-import gleam/regex
+import gleam/regexp
 import gleam/string
 import gleam_community/colour.{type Colour} as gc_colour
 
@@ -2342,11 +2342,12 @@ pub fn bg_colour(text: String, colour: Colour) -> String {
 /// </div>
 ///
 pub fn strip(text: String) -> String {
-  let regex_options = regex.Options(False, True)
-  let assert Ok(r) = regex.compile("(?:\\[(?:\\d+;?)+m)+", with: regex_options)
+  let regexp_options = regexp.Options(case_insensitive: False, multi_line: True)
+  let assert Ok(r) =
+    regexp.compile("(?:\\[(?:\\d+;?)+m)+", with: regexp_options)
 
   r
-  |> regex.split(text)
+  |> regexp.split(text)
   |> string.join("")
 }
 
