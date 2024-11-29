@@ -2342,8 +2342,9 @@ pub fn bg_colour(text: String, colour: Colour) -> String {
 /// </div>
 ///
 pub fn strip(text: String) -> String {
-  let regexp_options = regexp.Options(False, True)
-  let assert Ok(r) = regexp.compile("(?:\\[(?:\\d+;?)+m)+", with: regexp_options)
+  let regexp_options = regexp.Options(case_insensitive: False, multi_line: True)
+  let assert Ok(r) =
+    regexp.compile("(?:\\[(?:\\d+;?)+m)+", with: regexp_options)
 
   r
   |> regexp.split(text)
