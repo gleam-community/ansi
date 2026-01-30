@@ -1,4 +1,3 @@
-////
 //// - **Text style**
 ////   - [`bold`](#bold)
 ////   - [`italic`](#italic)
@@ -170,15 +169,6 @@ pub fn reset(text: String) -> String {
 /// both underlined, *and* bold!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bold(text: String) -> String {
   run(text, code([1], 22))
 }
@@ -215,15 +205,6 @@ pub fn bold(text: String) -> String {
 /// In this example, the text "Gleam" will be dim but the text "fun?" will be
 /// both underlined, *and* bold!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn dim(text: String) -> String {
   run(text, code([2], 22))
@@ -262,15 +243,6 @@ pub fn dim(text: String) -> String {
 /// both underlined, *and* bold!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn italic(text: String) -> String {
   run(text, code([3], 23))
 }
@@ -307,15 +279,6 @@ pub fn italic(text: String) -> String {
 /// In this example, the text "Gleam" will be dim but the text "fun?" will be
 /// both underlined, *and* bold!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn underline(text: String) -> String {
   run(text, code([4], 24))
@@ -354,15 +317,6 @@ pub fn underline(text: String) -> String {
 /// both underlined, *and* bold!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn inverse(text: String) -> String {
   run(text, code([7], 27))
 }
@@ -400,15 +354,6 @@ pub fn inverse(text: String) -> String {
 /// both underlined, *and* bold!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn hidden(text: String) -> String {
   run(text, code([8], 28))
 }
@@ -445,15 +390,6 @@ pub fn hidden(text: String) -> String {
 /// In this example, the text "Gleam" will be dim but the text "fun?" will be
 /// both underlined, *and* bold!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn strikethrough(text: String) -> String {
   run(text, code([9], 29))
@@ -494,15 +430,6 @@ pub fn strikethrough(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn black(text: String) -> String {
   run(text, code([30], 39))
 }
@@ -539,15 +466,6 @@ pub fn black(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn red(text: String) -> String {
   run(text, code([31], 39))
@@ -586,15 +504,6 @@ pub fn red(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn green(text: String) -> String {
   run(text, code([32], 39))
 }
@@ -631,15 +540,6 @@ pub fn green(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn yellow(text: String) -> String {
   run(text, code([33], 39))
@@ -678,15 +578,6 @@ pub fn yellow(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn blue(text: String) -> String {
   run(text, code([34], 39))
 }
@@ -723,15 +614,6 @@ pub fn blue(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn magenta(text: String) -> String {
   run(text, code([35], 39))
@@ -770,15 +652,6 @@ pub fn magenta(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn cyan(text: String) -> String {
   run(text, code([36], 39))
 }
@@ -816,15 +689,6 @@ pub fn cyan(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn white(text: String) -> String {
   run(text, code([37], 39))
 }
@@ -861,15 +725,6 @@ pub fn white(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn grey(text: String) -> String {
   bright_black(text)
@@ -916,15 +771,6 @@ pub fn gray(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bright_black(text: String) -> String {
   run(text, code([90], 39))
 }
@@ -963,15 +809,6 @@ pub fn bright_black(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bright_red(text: String) -> String {
   run(text, code([91], 39))
 }
@@ -1007,15 +844,6 @@ pub fn bright_red(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn bright_green(text: String) -> String {
   run(text, code([92], 39))
@@ -1053,15 +881,6 @@ pub fn bright_green(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bright_yellow(text: String) -> String {
   run(text, code([93], 39))
 }
@@ -1097,15 +916,6 @@ pub fn bright_yellow(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn bright_blue(text: String) -> String {
   run(text, code([94], 39))
@@ -1143,15 +953,6 @@ pub fn bright_blue(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bright_magenta(text: String) -> String {
   run(text, code([95], 39))
 }
@@ -1187,15 +988,6 @@ pub fn bright_magenta(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn bright_cyan(text: String) -> String {
   run(text, code([96], 39))
@@ -1233,15 +1025,6 @@ pub fn bright_cyan(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bright_white(text: String) -> String {
   run(text, code([97], 39))
 }
@@ -1278,15 +1061,6 @@ pub fn bright_white(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn pink(text: String) -> String {
   run(text, code([38, 5, 219], 39))
@@ -1329,15 +1103,6 @@ pub fn pink(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn hex(text: String, colour: Int) -> String {
   let colour = int.clamp(colour, max: 0xffffff, min: 0x0)
@@ -1393,15 +1158,6 @@ pub fn hex(text: String, colour: Int) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn colour(text: String, colour: Colour) -> String {
   let hex_colour = gc_colour.to_rgb_hex(colour)
   hex(text, hex_colour)
@@ -1449,15 +1205,6 @@ pub fn color(text: String, color: Colour) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bg_black(text: String) -> String {
   run(text, code([40], 49))
 }
@@ -1494,15 +1241,6 @@ pub fn bg_black(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn bg_red(text: String) -> String {
   run(text, code([41], 49))
@@ -1541,15 +1279,6 @@ pub fn bg_red(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bg_green(text: String) -> String {
   run(text, code([42], 49))
 }
@@ -1586,15 +1315,6 @@ pub fn bg_green(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn bg_yellow(text: String) -> String {
   run(text, code([43], 49))
@@ -1633,15 +1353,6 @@ pub fn bg_yellow(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bg_blue(text: String) -> String {
   run(text, code([44], 49))
 }
@@ -1678,15 +1389,6 @@ pub fn bg_blue(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn bg_magenta(text: String) -> String {
   run(text, code([45], 49))
@@ -1725,15 +1427,6 @@ pub fn bg_magenta(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bg_cyan(text: String) -> String {
   run(text, code([46], 49))
 }
@@ -1770,15 +1463,6 @@ pub fn bg_cyan(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn bg_white(text: String) -> String {
   run(text, code([47], 49))
@@ -1817,15 +1501,6 @@ pub fn bg_white(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bg_bright_black(text: String) -> String {
   run(text, code([100], 49))
 }
@@ -1862,15 +1537,6 @@ pub fn bg_bright_black(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn bg_bright_red(text: String) -> String {
   run(text, code([101], 49))
@@ -1909,15 +1575,6 @@ pub fn bg_bright_red(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bg_bright_green(text: String) -> String {
   run(text, code([102], 49))
 }
@@ -1954,15 +1611,6 @@ pub fn bg_bright_green(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn bg_bright_yellow(text: String) -> String {
   run(text, code([103], 49))
@@ -2001,15 +1649,6 @@ pub fn bg_bright_yellow(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bg_bright_blue(text: String) -> String {
   run(text, code([104], 49))
 }
@@ -2046,15 +1685,6 @@ pub fn bg_bright_blue(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn bg_bright_magenta(text: String) -> String {
   run(text, code([105], 49))
@@ -2093,15 +1723,6 @@ pub fn bg_bright_magenta(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bg_bright_cyan(text: String) -> String {
   run(text, code([106], 49))
 }
@@ -2139,15 +1760,6 @@ pub fn bg_bright_cyan(text: String) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bg_bright_white(text: String) -> String {
   run(text, code([107], 49))
 }
@@ -2184,15 +1796,6 @@ pub fn bg_bright_white(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn bg_pink(text: String) -> String {
   run(text, code([48, 5, 219], 49))
@@ -2235,15 +1838,6 @@ pub fn bg_pink(text: String) -> String {
 /// In this example, the text "Gleam" will be pink but the text "fun?" will be
 /// yellow, *not* the default colour!
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn bg_hex(text: String, colour: Int) -> String {
   run(
@@ -2298,15 +1892,6 @@ pub fn bg_hex(text: String, colour: Int) -> String {
 /// yellow, *not* the default colour!
 /// </details>
 ///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
-///
 pub fn bg_colour(text: String, colour: Colour) -> String {
   let hex_colour = gc_colour.to_rgb_hex(colour)
   bg_hex(text, hex_colour)
@@ -2331,15 +1916,6 @@ pub fn bg_colour(text: String, colour: Colour) -> String {
 /// In this example, the text "lucy" is boldened by `ansi.bold` and then converted back to the original
 /// string with `ansi.strip`.
 /// </details>
-///
-/// <div style="position: relative;">
-///     <a style="position: absolute; left: 0;" href="https://github.com/gleam-community/ansi/issues">
-///         <small>Spot a typo? Open an issue!</small>
-///     </a>
-///     <a style="position: absolute; right: 0;" href="#">
-///         <small>Back to top ↑</small>
-///     </a>
-/// </div>
 ///
 pub fn strip(text: String) -> String {
   let regexp_options = regexp.Options(case_insensitive: False, multi_line: True)
