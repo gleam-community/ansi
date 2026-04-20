@@ -31,7 +31,6 @@ jobs:
 
       - run: gleam publish -y
         env:
-          HEXPM_USER: ${{ secrets.HEX_USERNAME }}
-          HEXPM_PASS: ${{ secrets.HEX_PASSWORD }}
+          HEXPM_API_KEY: ${{ secrets.HEX_API_KEY }}
 
       - uses: softprops/action-gh-release@v1
